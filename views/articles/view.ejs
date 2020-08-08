@@ -14,7 +14,7 @@
             <p class="text-muted mb-2"><%= article.created.toLocaleDateString() %></p>
             <div>
                 <a href="/articles" class="btn btn-secondary">All Articles</a>
-                <a href="/articles/edit/<% article.id %>" class="btn btn-info">Edit</a>
+                <a href="/articles/edit/<% article.slug %>" class="btn btn-info">Edit</a>
             </div>
             <p><%= article.description %></p>
             <p><%= article.markdown %></p>

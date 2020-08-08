@@ -11,7 +11,7 @@
 <body>
     <section class="container">
        <h1 class="mb-4">Blog Articles</h1>
-       <a href="/articles/add" class="btn btn-success mb-4">Add an Article</a>
+       <a href="articles/add" class="btn btn-success mb-4">Add an Article</a>
     
         <table class="table table-dark">
             <thead>
@@ -29,8 +29,8 @@
                     <td class="text-muted"><%= article.created.toLocaleDateString() %></td>
                     <td><%= article.description %></td>
                     <td>
-                        <a href="articles/view/<% article.id %>" class="btn btn-primary">View</a>
-                        <a href="articles/edit/<% article.id %>" class="btn btn-secondary">Edit</a>
+                        <a href="articles/view/<%= article.slug %>" class="btn btn-primary">View</a>
+                        <a href="articles/edit/<%= article.slug %>" class="btn btn-secondary">Edit</a>
                     </td>
                 </tr>
             <% }) %>
