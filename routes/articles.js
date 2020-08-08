@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Article = require('./../models/articles');
 
-
 router.get('/', async(req, res) => {
     const articles = await Article.find().sort({
         created: 'desc'
@@ -38,6 +37,17 @@ router.post('/', async (req, res) => {
     } catch (e) {
         console.log(e);
         res.render('articles/add', { 'article': article });
+    }
+
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        await Article.findByIdAndDelete(req.params.id);
+        res.redirect('/articles');
+    } catch (e) {
+        console.log(e);
+        res.send('Failed to Delete');
     }
 
 });

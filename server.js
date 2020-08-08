@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const articleRouter = require ('./routes/articles');
+const methodOverride = require('method-override');
 const app = express();
 
 mongoose.connect('mongodb://localhost/blog',{ 
@@ -11,14 +12,11 @@ mongoose.connect('mongodb://localhost/blog',{
 
 app.set('view engine', 'ejs');
 
-
+app.use(methodOverride('_method'));
 app.use(express.urlencoded( { extended: false }));
 
 /* ROUTE TO HOMEPAGE */
-app.get('/', async (req, res) => { 
-    const articles = await Article.find().sort({
-        created: 'desc'
-    });
+app.get('/', (req, res) => { 
     res.render('index');
 });
 
